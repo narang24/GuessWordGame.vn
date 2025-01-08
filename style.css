@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position:relative;
+    min-height: 100vh;
+    font-family: "Poppins", serif;
+    background-image: url(https://img.freepik.com/free-photo/wooden-dice-with-letters-them-pages-book_114579-87209.jpg?t=st=1736317891~exp=1736321491~hmac=04f6ec0839d899ab22d8602aad44aac96b4472de76e00158ed9713e3fcd5111d&w=996);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+}
+body::before {
+    content: "";
+    height:100%;
+    width:100%;
+    position: absolute;
+    top:0;
+    right:0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.wrapper {
+    position:relative;
+    box-sizing: border-box;
+    backdrop-filter: blur(15px);
+    background-color: var(--gradient-right);
+    color:#fff;
+    border:2px solid #fff;
+    padding: 1.25em;
+    border-radius: 1em;
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.btn {
+    height: 2.8em;
+    width: 100%;
+    border-radius: 1em;
+    border: 2px solid transparent;
+    background-color: rgba(173, 157, 137,0.75);
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 525;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.btn1 {
+    border: 2.5px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 650;
+}
+
+.game-container {
+    width: auto;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+}
+
+.box {
+    height: 55px;
+    width: 43px;
+    margin: 8px;
+    border-radius: 0.65em;
+    background-color: transparent;
+    border: 0.18em solid #fff;
+    outline: none;
+    text-align: center;
+    font-size-adjust: calc(1.2);
+    font-weight: 400;
+    color: #fff;
+}
+
+.stats-container {
+    text-align: left;
+    padding: 0 2em 0 2em;
+}
+
+.start {
+    position:relative;
+    top:0;
+    bottom:0;
+    height: 3em;
+    width: 9em;
+    border: 2px solid #fff;
+    font-size: calc(25px);
+    font-weight: 600;
+    border-radius: 1.1em;
+    background-color:transparent;
+    color:#fff;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.start:focus {
+    outline: auto;
+}
+
+.hide {
+    display: none;
+}
+
+.verified {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.format {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ @media screen and (max-width:550px){
+    .body {
+     min-height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    }
+    .wrapper {
+        width:90vw;
+    }
+    .game-container {
+        display: flex;
+        justify-content: center;
+    }
+    .box {
+      height:44px;
+      width:35px;
+      margin:2.2px;
+    }
+    .stats-container {
+     padding-left:15px;
+    }
+    .btn {
+        height:2.5em;
+        margin:4px 4px 0px 4px;
+    }
+    .format {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+ }
