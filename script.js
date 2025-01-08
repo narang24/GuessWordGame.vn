@@ -45,6 +45,7 @@ let game = () => {
     let para = document.querySelector(".wrong-letters p");
     let inputs = document.querySelectorAll("input");
     inputs[0].focus();
+    inputs[(items[idx].name).length-1].maxLength="1";
     inputs.forEach((val, i) => {
         inputs[i].addEventListener("keyup", (e) => {
             if (e.keyCode === 39 && i < (items[idx].name).length - 1)
@@ -56,6 +57,16 @@ let game = () => {
         });
     });
 
+inputs.forEach((val,i)=> {
+ inputs[i].addEventListener("keyup",(e)=> {
+    if(e.keyCode===8 && i>0)
+    {
+        inputs[i].value="";
+        inputs[i].previousElementSibling.focus();
+    }
+ });
+});
+
     // inputs.forEach((val, i) => {
     //     inputs[i].addEventListener("input", () => {
     //     let newVal;
@@ -64,7 +75,6 @@ let game = () => {
     //         newVal=inputs[i].value;
     //         inputs[i].value = (inputs[i].value).charAt(ch);
     //         for (let emp = i + 1; emp < (items[idx].name).length; emp++) {
-    //             console.log(emp);
     //             if (inputs[emp].value === "") {
     //                 ch++;
     //                 inputs[emp].value = (newVal).charAt(ch);
@@ -79,30 +89,36 @@ let game = () => {
     inputs.forEach((val, i) => {
         inputs[i].addEventListener("input", () => {
             if ((inputs[i].value).toUpperCase() >= 'A' && (inputs[i].value).toUpperCase() <= 'Z') {
-        //og
+        //og    
+                let found=0;
                 if ((inputs[i].value).toUpperCase() === (items[idx].name).charAt(i)) {
                     for (let j = 0; j < (items[idx].name).length; j++) {
                         if ((items[idx].name).charAt(j) === (inputs[i].value).toUpperCase()) {
                             inputs[j].value = inputs[i].value;
-                            inputs[j].disabled;
+                            found=1;
                         }
                     }
-                    inputs[i].disabled;
+                    if(found==1) {
+                        console.log("hello");
+                        inputs[i].nextElementSibling.focus();
+                    }
                 }
                 else {
                     let flag = 0;
                     for (let j = 0; j < (items[idx].name).length; j++) {
                         if ((items[idx].name).charAt(j) === (inputs[i].value).toUpperCase()) {
                             inputs[j].value = inputs[i].value;
-                            inputs[j].disabled;
+                            inputs[i].value="";
                             flag = 1;
+                            found=2;
                         }
                     }
-                    if (flag === 0)
+                    if (flag === 0) {
                         para.innerText += ` ${inputs[i].value},`;
                     inputs[i].value = "";
+                    }
                 }
-                
+                guess--;
                 if (guess === 0) {
                     for (let i = 0; i < (items[idx].name).length; i++) {
                         str += inputs[i].value;
@@ -119,7 +135,6 @@ let game = () => {
                 }
                 let num = document.querySelector(".remaining-guesses p");
                 num.innerText = `Remaining Guesses: ${guess}`;
-                guess--;
             }
         });
     });
